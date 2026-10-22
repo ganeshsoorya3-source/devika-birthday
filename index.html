@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Devika | For Her Royal Liegehood ♡</title>
+  <meta name="description" content="A warm, personal digital birthday letter for Devika. Happy Birthday, My Liege!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient subtle decorative background particles -->
+  <div class="ambient-stars" aria-hidden="true" id="ambientStars"></div>
+
+  <!-- Audio Player (Hidden standard element + Custom floating controller) -->
+  <audio id="bgAudio" loop preload="auto">
+    <!-- Target audio file path specified by user -->
+    <source src="assets/audio/Stromae,%20Pomme%20-%20Ma%20Meilleure%20Ennemie%20(from%20Arcane%20Season%202)%20-%20Piano%20Cover%20_%20Version%20%5B0Z7jXlBV_nU%5D.mp3" type="audio/mpeg">
+    <!-- Local fallback alternative if filename was simplified -->
+    <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Persistent Floating Music Player (Visible after envelope is opened) -->
+  <aside id="musicWidget" class="music-widget hidden" aria-label="Soundtrack controls">
+    <div class="music-card">
+      <div class="music-vinyl-icon" id="musicVinyl">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10" stroke="#7a2e3b" fill="#fcf6ee"/>
+          <circle cx="12" cy="12" r="4" stroke="#c48b71"/>
+          <circle cx="12" cy="12" r="1.5" fill="#7a2e3b"/>
+          <path d="M12 2 A 10 10 0 0 1 20 8" stroke="#d4a373" stroke-linecap="round" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+
+      <div class="music-info">
+        <span class="music-title">♫ a little soundtrack for your letter</span>
+        <span class="music-status" id="musicStatusText">Playing softly...</span>
+      </div>
+
+      <div class="music-controls">
+        <button id="btnPlayPause" class="music-btn" aria-label="Play or pause soundtrack" title="Play / Pause">
+          <svg id="iconPause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+          </svg>
+          <svg id="iconPlay" class="hidden" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <polygon points="6,4 20,12 6,20"/>
+          </svg>
+        </button>
+
+        <button id="btnMute" class="music-btn" aria-label="Mute or unmute soundtrack" title="Mute / Unmute">
+          <svg id="iconVolHigh" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg id="iconMute" class="hidden" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <button id="btnReplay" class="music-btn" aria-label="Restart soundtrack" title="Restart track">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Audio file helper fallback prompt if audio fails to load -->
+    <div id="audioNotice" class="audio-notice hidden">
+      <span>Tip: Place the MP3 file in <code>assets/audio/</code> or tap to select it locally.</span>
+      <label class="audio-picker-label">
+        Select Audio
+        <input type="file" id="localAudioPicker" accept="audio/*" class="visually-hidden">
+      </label>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <main class="page-container">
+
+    <!-- SCREEN 1: ENVELOPE OPENING VIEW -->
+    <section id="openingScreen" class="opening-screen" aria-label="Envelope presentation">
+      
+      <header class="opening-header">
+        <div class="royal-crest" aria-hidden="true">
+          <!-- Handcrafted Crown Doodle -->
+          <svg class="crown-svg" viewBox="0 0 100 65" width="62" height="42">
+            <path d="M 12 52 L 88 52 C 90 52 92 50 92 48 L 88 22 L 68 36 L 50 14 L 32 36 L 12 22 L 8 48 C 8 50 10 52 12 52 Z" 
+                  fill="#f6d365" stroke="#944856" stroke-width="3" stroke-linejoin="round" />
+            <circle cx="12" cy="18" r="4.5" fill="#c44569" stroke="#944856" stroke-width="2" />
+            <circle cx="50" cy="10" r="5.5" fill="#842d3e" stroke="#944856" stroke-width="2" />
+            <circle cx="88" cy="18" r="4.5" fill="#c44569" stroke="#944856" stroke-width="2" />
+            <line x1="16" y1="46" x2="84" y2="46" stroke="#944856" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 4"/>
+          </svg>
+        </div>
+        
+        <h1 class="royal-title">For Her Royal Liegehood</h1>
+        <p class="royal-subtitle">A little something for your birthday.</p>
+      </header>
+
+      <!-- The Interactive Envelope -->
+      <div class="envelope-stage">
+        <div class="envelope" id="envelopeElement" role="region" aria-label="Sealed envelope">
+          
+          <!-- Back flap / interior base -->
+          <div class="envelope-back"></div>
+          
+          <!-- The Letter peek inside envelope -->
+          <div class="letter-peek" id="letterPeek">
+            <div class="peek-lines"></div>
+          </div>
+          
+          <!-- Left and right folded flaps -->
+          <div class="envelope-flaps">
+            <div class="flap flap-left"></div>
+            <div class="flap flap-right"></div>
+            <div class="flap flap-bottom"></div>
+          </div>
+
+          <!-- Top opening flap with 3D folding -->
+          <div class="envelope-top-flap" id="envelopeTopFlap"></div>
+
+          <!-- Wax Seal -->
+          <div class="wax-seal" id="waxSeal" aria-hidden="true">
+            <div class="seal-inner">
+              <!-- Mini Crown Doodle in Wax Seal -->
+              <svg viewBox="0 0 40 30" width="24" height="18" class="seal-crown">
+                <path d="M 5 24 L 35 24 L 35 12 L 27 18 L 20 8 L 13 18 L 5 12 Z" fill="#fcf6ee" opacity="0.9"/>
+                <circle cx="5" cy="10" r="2" fill="#fcf6ee"/>
+                <circle cx="20" cy="6" r="2.2" fill="#fcf6ee"/>
+                <circle cx="35" cy="10" r="2" fill="#fcf6ee"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="open-action">
+        <button id="btnOpenLetter" class="btn-royal" type="button" aria-controls="letterScreen">
+          <span class="btn-text">Open your letter ♡</span>
+          <span class="btn-sparkle" aria-hidden="true">✨</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- SCREEN 2: THE SCRAPBOOK BIRTHDAY LETTER (Revealed smoothly) -->
+    <article id="letterScreen" class="letter-screen hidden" aria-label="Devika's birthday letter">
+      
+      <!-- Scrapbook Paper Sheet -->
+      <div class="scrapbook-page">
+        
+        <!-- Washi tape decorative pieces -->
+        <div class="washi-tape washi-top-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-top-right" aria-hidden="true"></div>
+
+        <!-- Scrapbook Stamp & Doodles Header -->
+        <header class="letter-header">
+          <div class="scrapbook-badge" aria-hidden="true">
+            <span class="badge-postmark">SPECIAL DISPATCH</span>
+            <span class="badge-date">ROYAL ARCHIVES</span>
+          </div>
+
+          <!-- Little Royal Crown Doodle -->
+          <div class="royal-crown-doodle" aria-hidden="true">
+            <svg viewBox="0 0 100 65" width="70" height="46" class="royal-crown-ink">
+              <!-- Delicate hand-drawn royal crown doodle -->
+              <path d="M 14 50 Q 50 54 86 50 L 90 20 L 68 35 L 50 12 L 32 35 L 10 20 Z" 
+                    fill="none" stroke="#7a2e3b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="17" r="3.2" fill="#c48b71" stroke="#7a2e3b" stroke-width="1.8"/>
+              <circle cx="50" cy="9" r="4" fill="#d4a373" stroke="#7a2e3b" stroke-width="1.8"/>
+              <circle cx="90" cy="17" r="3.2" fill="#c48b71" stroke="#7a2e3b" stroke-width="1.8"/>
+              <!-- Crown inner jewel sparkles -->
+              <circle cx="34" cy="44" r="2" fill="#7a2e3b"/>
+              <circle cx="50" cy="42" r="2.5" fill="#7a2e3b"/>
+              <circle cx="66" cy="44" r="2" fill="#7a2e3b"/>
+              <!-- Sparkle stars near crown -->
+              <path d="M 96 6 Q 96 11 101 11 Q 96 11 96 16 Q 96 11 91 11 Q 96 11 96 6 Z" fill="#d4a373"/>
+              <path d="M 4 28 Q 4 32 8 32 Q 4 32 4 36 Q 4 32 0 32 Q 4 32 4 28 Z" fill="#d4a373"/>
+            </svg>
+          </div>
+
+          <h2 class="salutation">Dear Devika,</h2>
+          <h3 class="liege-shout">HAPPY BIRTHDAY, MY LIEGE. ♡</h3>
+        </header>
+
+        <!-- The Letter Body - Preserving the Exact Voice and Text -->
+        <div class="letter-body">
+          <p class="letter-para">
+            First of all, I hope you realise how much of an honour it is for you to receive a birthday letter from one of your most loyal subjects. Please allow 3–5 business days for the royal court to process your appreciation.
+          </p>
+
+          <p class="letter-para script-accent">
+            Okay, jokes aside.
+          </p>
+
+          <p class="letter-para">
+            It's actually funny to think that all of this started because I put &lsquo;Bye Bye&rsquo; by the Backstreet Boys on my Instagram Notes and you decided to text me. Imagine explaining to someone that an Instagram note about a song would eventually lead to all these conversations, all this random lore, and me addressing you as &lsquo;My Liege&rsquo;.
+          </p>
+
+          <p class="letter-para">
+            And of course, we cannot forget your legendary title: <em>Destroyer of Women's Rights</em>. A designation bestowed upon you in the aftermath of our extraordinarily feminist Plus Two English textbook. The historical records are questionable, but the nickname has clearly survived.
+          </p>
+
+          <p class="letter-para">
+            Then there was your brief but iconic wingwoman era. Short tenure. Lasting legacy. An achievement that will forever remain in the archives.
+          </p>
+
+          <p class="letter-para heartfelt-shift">
+            But honestly, there's something I wanted to tell you beyond all the jokes.
+          </p>
+
+          <p class="letter-para heartfelt-lead">
+            Thank you for being such a kind and wonderful friend to me.
+          </p>
+
+          <p class="letter-para">
+            You've been there for me for a long time, and I don't think I always properly express how much I appreciate that. There have been days when I wasn't feeling my best, and somehow, talking to you could make the day feel a little lighter. You have this genuinely comforting energy, and even an ordinary conversation with you could be something I looked forward to.
+          </p>
+
+          <p class="letter-para">
+            I appreciate the way you've helped me, the way you've been there, and all those little moments that might not have seemed like a big deal at the time. They meant something to me.
+          </p>
+
+          <p class="letter-para">
+            I'm genuinely glad that you texted me that day. Out of all the random things that could have happened, I'm glad that particular conversation did.
+          </p>
+
+          <p class="letter-para">
+            You deserve so much happiness, kindness, and good things in the year ahead. I hope this next chapter brings you wonderful experiences, reasons to laugh until your stomach hurts, people who appreciate you for who you are, and plenty of moments that make you feel as good as you've made other people's days feel.
+          </p>
+
+          <p class="letter-para">
+            And please continue being your wonderful self. The royal court requires your services, the wingwoman archives must remain active, and the Destroyer of Women's Rights investigation is still technically open.
+          </p>
+
+          <p class="letter-para farewell">
+            Happy birthday once again, Devika.
+          </p>
+
+          <p class="letter-para farewell">
+            Thank you for being part of my life, and thank you for being you.
+          </p>
+
+          <div class="letter-signature">
+            <span class="sign-close">With lots of appreciation,</span>
+            <span class="sign-name">Your loyal subject ♡</span>
+          </div>
+        </div>
+
+        <hr class="letter-divider" aria-hidden="true">
+
+        <!-- Finishing Touches Section -->
+        <footer class="letter-finishing-touches">
+          
+          <!-- Decorative Birthday Cake Doodle & Floating Stars -->
+          <div class="cake-illustration-wrapper" aria-label="Decorative birthday cake">
+            <div class="floating-sparkle sparkle-1" aria-hidden="true">✦</div>
+            <div class="floating-sparkle sparkle-2" aria-hidden="true">⋆</div>
+            <div class="floating-sparkle sparkle-3" aria-hidden="true">✨</div>
+            <div class="floating-sparkle sparkle-4" aria-hidden="true">✦</div>
+
+            <svg class="cake-svg" viewBox="0 0 120 120" width="90" height="90" role="img" aria-label="Birthday cake doodle">
+              <!-- Gentle shadow -->
+              <ellipse cx="60" cy="108" rx="42" ry="7" fill="#eadcc9"/>
+              <!-- Plate -->
+              <ellipse cx="60" cy="102" rx="46" ry="8" fill="#fefdf9" stroke="#944856" stroke-width="2"/>
+              <!-- Bottom Cake Tier -->
+              <path d="M 28 72 C 28 72 28 94 28 94 C 28 99 60 102 92 94 C 92 94 92 72 92 72 Z" fill="#f7e6d9" stroke="#7a2e3b" stroke-width="2"/>
+              <!-- Middle Frosting Drips -->
+              <path d="M 28 72 C 34 78 40 70 46 76 C 52 70 58 77 64 71 C 70 76 76 70 82 76 C 88 71 92 72 92 72 C 92 68 60 65 28 72 Z" fill="#944856"/>
+              <!-- Top Cake Tier -->
+              <path d="M 38 50 C 38 50 38 70 38 70 C 38 74 60 76 82 70 C 82 70 82 50 82 50 Z" fill="#fdf0e6" stroke="#7a2e3b" stroke-width="2"/>
+              <ellipse cx="60" cy="50" rx="22" ry="6" fill="#fcf6ee" stroke="#7a2e3b" stroke-width="2"/>
+              <!-- Candle -->
+              <rect x="58" y="32" width="4" height="18" rx="1.5" fill="#d4a373" stroke="#7a2e3b" stroke-width="1.2"/>
+              <line x1="60" y1="28" x2="60" y2="32" stroke="#7a2e3b" stroke-width="1.5"/>
+              <!-- Flame with gentle animated glow -->
+              <path class="candle-flame" d="M 60 19 C 57 23 57 27 60 29 C 63 27 63 23 60 19 Z" fill="#f9ca24"/>
+              <ellipse cx="60" cy="26" rx="1.5" ry="2" fill="#eb4d4b"/>
+              <!-- Strawberry / cherry topping -->
+              <circle cx="50" cy="48" r="3" fill="#c44569"/>
+              <circle cx="70" cy="48" r="3" fill="#c44569"/>
+            </svg>
+          </div>
+
+          <!-- Final Handwritten Note (P.S.) -->
+          <div class="ps-box">
+            <span class="ps-tag">P.S.</span>
+            <p class="ps-text">
+              You are officially allowed to be insufferable today. It's your birthday. Use this privilege wisely, My Liege.
+            </p>
+          </div>
+
+          <!-- Birthday Magic Button & Confetti Canvas -->
+          <div class="magic-action-container">
+            <button id="btnMagic" class="btn-magic" type="button">
+              <span class="magic-icon">✨</span>
+              <span class="magic-label">Send a little birthday magic ✨</span>
+            </button>
+
+            <!-- Confetti Message Container (revealed on click) -->
+            <div id="magicMessage" class="magic-banner hidden" role="status" aria-live="polite">
+              <span class="magic-banner-text">Happy birthday again, Devika! ♡</span>
+            </div>
+          </div>
+
+        </footer>
+
+      </div>
+      
+      <!-- Back to top gentle floating link -->
+      <div class="scroll-top-wrapper">
+        <button id="btnScrollTop" class="btn-subtle-top" aria-label="Scroll back to top">
+          ↑ Back to top
+        </button>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Fullscreen Particle / Confetti Canvas -->
+  <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
